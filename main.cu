@@ -255,7 +255,7 @@ int main(int argc, char **argv) {
 		host_nonce[2] = mt();
 
 		//Decodes and stores the difficulty in a 16-byte array for convenience
-		unsigned char * difficulty = set_tuna_difficulty(65532, 12);								//ctx.data contains padded data
+		unsigned char * difficulty = set_tuna_difficulty(16383, 12);								//ctx.data contains padded data
 
 		//Data buffer for sending debug information to/from the GPU
 		unsigned char debug[32];
