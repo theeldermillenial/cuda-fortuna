@@ -252,6 +252,8 @@ int main(int argc, char **argv) {
 	while (true) {
 		
 		//Increment the global nonce
+		host_nonce[0] = mt();
+		host_nonce[1] = mt();
 		host_nonce[2] = mt();
 
 		//Decodes and stores the difficulty in a 16-byte array for convenience
