@@ -224,9 +224,9 @@ int main(int argc, char **argv) {
 	// unsigned char *data = test_block;
 	unsigned long MSG_SIZE;
 	#ifndef VERIFY_HASH
-	const unsigned char *data = get_file_data("../datum.txt", &MSG_SIZE);
+	const unsigned char *data = get_file_data("./datum.txt", &MSG_SIZE);
 	#else
-	unsigned char *data = get_file_data("../datum.txt", &MSG_SIZE);
+	unsigned char *data = get_file_data("./datum.txt", &MSG_SIZE);
 	#endif
 
 
@@ -349,17 +349,17 @@ int main(int argc, char **argv) {
 			kernel_sha256d<<<DimGrid, DimBlock>>>(device_nonce, (void *) d_debug);
 			
 			#ifndef VERIFY_HASH
-			if (check_file("../datum.txt")) {
+			if (check_file("./datum.txt")) {
 			#else
-			if (check_file("../datum.txt")) {
+			if (check_file("./datum.txt")) {
 			#endif
 				printf("Found new datum!\n");
-				data = get_file_data("../datum.txt", &MSG_SIZE);
+				data = get_file_data("./datum.txt", &MSG_SIZE);
 				#ifndef VERIFY_HASH
-				unsigned char *data = get_file_data("../datum.txt", &MSG_SIZE);
-				remove("../datum.txt");
+				unsigned char *data = get_file_data("./datum.txt", &MSG_SIZE);
+				remove("./datum.txt");
 				#else
-				unsigned char *data = get_file_data("../datum.txt", &MSG_SIZE);
+				unsigned char *data = get_file_data("./datum.txt", &MSG_SIZE);
 				#endif
 			}
 
@@ -402,7 +402,7 @@ int main(int argc, char **argv) {
 			printf("%.8x ", host_nonce[2]);
 			printf("%.8x ", host_nonce[3]);
 			printf("\n");
-			store_nonce("../submit.txt", &host_nonce[0]);
+			store_nonce("./submit.txt", &host_nonce[0]);
 			printf("Difficulty: " );
 			for(int i=0; i<16; i++) {
 				printf("%.2x", difficulty[i]);
@@ -410,7 +410,7 @@ int main(int argc, char **argv) {
 			printf("\n");
 			compute_and_print_hash(data, host_nonce, MSG_SIZE);
 
-			data = get_file_data("../datum.txt", &MSG_SIZE);
+			data = get_file_data("./datum.txt", &MSG_SIZE);
 			host_nonce[3] = 0;
 		}
 		// else {
