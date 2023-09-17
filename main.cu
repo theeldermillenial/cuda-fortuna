@@ -12,8 +12,6 @@ extern "C" {
 }
 #include "sha256_unrolls.h"
 
-#include "test.h"
-
 #include <chrono>
 #include <thread>
 #include <string>
